@@ -1,15 +1,30 @@
-name: CI
+name: Dummy CI Checks
 
 on:
   pull_request:
   merge_group:
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate workflows
+      - name: Fake lint
+        run: echo "lint ok"
+
+  unit-tests:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fake unit tests
         run: |
-          echo "Add real tests or linting here"
+          echo "running unit tests"
+          echo "unit tests ok"
+
+  integration-tests:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fake integration tests
+        run: |
+          echo "integration tests ok"
 
