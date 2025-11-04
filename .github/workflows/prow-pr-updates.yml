@@ -1,11 +1,8 @@
-name: Prow LGTM Gate
+name: Periodic PR merging
 
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+  schedule:
+  - cron: "*/5 * * * *" # every 5 minutes
 
 jobs:
   reconcile:
@@ -16,3 +13,4 @@ jobs:
         with:
           jobs: lgtm
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: 'squash'
