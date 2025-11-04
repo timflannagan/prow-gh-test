@@ -27,4 +27,3 @@ jobs:
       - name: Fake integration tests
         run: |
           echo "integration tests ok"
-
