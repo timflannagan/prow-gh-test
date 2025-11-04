@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+  merge_group:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate workflows
+        run: |
+          echo "Add real tests or linting here"
+

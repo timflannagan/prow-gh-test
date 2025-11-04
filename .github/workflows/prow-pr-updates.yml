@@ -1,0 +1,19 @@
+name: Prow LGTM Gate
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce LGTM policy
+        uses: jpmcb/prow-github-actions@v2
+        with:
+          jobs: lgtm
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
